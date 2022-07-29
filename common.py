@@ -172,10 +172,10 @@ def divide_uids(uids, num_divs):
 
     batch = [list() for _ in range(num_divs)]
     index=0
-    for class in CLASSES:
+    for clazz in CLASSES:
         for gender in GENDERS:
-            while uids[class][gender]:
-                batch[(index % num_divs)].append(uids[class][gender].pop())
+            while uids[clazz][gender]:
+                batch[(index % num_divs)].append(uids[clazz][gender].pop())
                 index += 1
 
     return batch
@@ -184,25 +184,25 @@ def group_uids(files):
     uids = dict()
 
     # intialize empty sets
-    for class in CLASSES:
-        uids[class] = dict()
+    for clazz in CLASSES:
+        uids[clazz] = dict()
         for gender in GENDERS:
-            uids[class][gender] = set()
+            uids[clazz][gender] = set()
 
-    # extract uids and append to class/gender sets
+    # extract uids and append to clazz/gender sets
     for file in files:
         info = get_filename(file).split('_')
 
-        class = info[0]
+        clazz = info[0]
         gender = info[1]
         uid = info[2].split('.')[0]
 
-        uids[class][gender].add(uid)
+        uids[clazz][gender].add(uid)
 
     # convert sets to lists
-    for class in CLASSES:
+    for clazz in CLASSES:
         for gender in GENDERS:
-            uids[class][gender] = sorted(list(uids[class][gender]))
+            uids[clazz][gender] = sorted(list(uids[clazz][gender]))
 
     return uids
 

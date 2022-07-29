@@ -14,9 +14,9 @@ import common
 
 
 def has_uids(uids):
-    for class in CLASSES:
+    for clazz in CLASSES:
         for gender in GENDERS:
-            if len(uids[class][gender]) == 0:
+            if len(uids[clazz][gender]) == 0:
                 return False
 
     return True
@@ -88,7 +88,7 @@ def write_fold(
     for index, fold_file in enumerate(fold_files):
         #print(fold_file)
         filename = common.get_filename(fold_file)
-        class = filename.split('_')[0]
+        clazz = filename.split('_')[0]
         gender = filename.split('_')[1]
         key = (filename.split('_')[2]).split('.')[0]
 
@@ -115,7 +115,7 @@ def write_fold(
 
         features[index] = normalize_fb(data, output_shape)
         #print(features[index][:,0])
-        metadata.append((class, gender, filename))
+        metadata.append((clazz, gender, filename))
 
     assert len(metadata) == len(fold_files)
 
@@ -144,11 +144,11 @@ def generate_fold(
         output_shape):
 
     #print('UIDS: %s\n' % uids)
-    # pull uid for each a class, gender pair
+    # pull uid for each a clazz, gender pair
     fold_uids = []
-    for class in CLASSES:
+    for clazz in CLASSES:
         for gender in GENDERS:
-            fold_uids.append(uids[class][gender].pop())
+            fold_uids.append(uids[clazz][gender].pop())
 
     #print(fold_uids)
 

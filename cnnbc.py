@@ -149,7 +149,7 @@ def build_model(input_shape):
 
     return model
 
-sub decode_and_evaluate(modelFileName,
+def decode_and_evaluate(modelFileName,
                         foldsFolder,
                         group,
                         input_shape,
@@ -179,7 +179,7 @@ sub decode_and_evaluate(modelFileName,
     common.test(test_labels, test_features, test_metadata, model, clazzes, 'eval', threshold)
     print("Model testing and scoring took a total of: %.2fsecs\n" % (time.time()-start))
 
-sub train_and_validate( foldsFolder,
+def train_and_validate( foldsFolder,
                         input_shape,
                         outModelFileName,
                         numEpochs=20,
