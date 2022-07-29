@@ -1,4 +1,3 @@
-import imageio
 from glob import glob
 import os
 import shutil
@@ -6,9 +5,6 @@ import numpy as np
 from sklearn.utils import shuffle
 import time
 import speechpy
-
-import kaldiio
-
 from constants import *
 import common
 

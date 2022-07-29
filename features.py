@@ -208,5 +208,5 @@ if __name__ == "__main__":
     if args.debug:
         process_audio(os.path.join(common.DATASET_DIST, 'test'), os.path.join(common.FEATS_DIST, 'debug'), debug=True)
     else:
-        process_audio(os.path.join(common.DATASET_DIST, 'test'),  os.path.join(common.FEATS_DIST, 'test',  debug=False, SeqLength=WIDTH, NumFeats=FB_HEIGHT))
-        process_audio(os.path.join(common.DATASET_DIST, 'train'), os.path.join(common.FEATS_DIST, 'train', debug=False, SeqLength=WIDTH, NumFeats=FB_HEIGHT))
+        process_audio(os.path.join(common.DATASET_DIST, 'test'),  os.path.join(common.FEATS_DIST, 'test'),  debug=False, SeqLength=WIDTH, NumFeats=FB_HEIGHT)
+        process_audio(os.path.join(common.DATASET_DIST, 'train'), os.path.join(common.FEATS_DIST, 'train'), debug=False, SeqLength=WIDTH, NumFeats=FB_HEIGHT)
