@@ -195,6 +195,11 @@ def train_and_validate( foldsFolder,
         numKfoldIterations = numFolds
         print("Starting %d fold cross-validation ..." % numKfoldIterations)
 
+    if createModelRef is None:
+	createModelRef = build_model
+
+    modelFileName = outModelFileName
+
     generator = common.train_generator(
         numFolds, foldsFolder, input_shape, max_iterations=numKfoldIterations)
 
