@@ -198,8 +198,6 @@ def train_and_validate( foldsFolder,
     if createModelRef is None:
 	createModelRef = build_model
 
-    modelFileName = outModelFileName
-
     generator = common.train_generator(
         numFolds, foldsFolder, input_shape, max_iterations=numKfoldIterations)
 
@@ -217,14 +215,14 @@ def train_and_validate( foldsFolder,
             first = False
 
         checkpoint = ModelCheckpoint(
-            modelFileName,
+            outModelFileName,
             monitor='val_loss',
             verbose=0,
             save_best_only=True,
             mode='min')
 
         checkpoint2 = ModelCheckpoint(
-            modelFileName + ".mva.h5",
+            outModelFileName + ".mva.h5",
             monitor='val_accuracy',
             verbose=0,
             save_best_only=True,
@@ -247,7 +245,7 @@ def train_and_validate( foldsFolder,
             validation_data=(test_features, test_labels),
             batch_size=batchSize)
 
-        model = load_model(modelFileName+".mva.h5")
+        model = load_model(outModelFileName+".mva.h5")
 
         scores = model.evaluate(test_features, test_labels, verbose=0)
         accuracy = scores[1]
