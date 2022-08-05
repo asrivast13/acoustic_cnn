@@ -34,7 +34,7 @@ class CNNBC_Decoder:
 
         fb = features.generate_fb_and_mfcc(signal, sample_rate)
         fb = fb.astype('float32', copy=False)
-        print(fb.shape)
+        #print(fb.shape)
         assert self.NumFeats >= fb.shape[1], ("Feature dimension %d does not match model dimensionality %d" % (fb.shape[1], self.NumFeats))
 
         feats = fb
